@@ -1808,27 +1808,6 @@ canvas { pointer-events: none; }
 
 
 
-<!-- EmailJS SDK -->
-
-
-// ── SAFETY FALLBACK: Force show site after 16s max ──
-setTimeout(() => {
-  const cin = document.getElementById('cinematic');
-  const site = document.getElementById('site');
-  if(cin) { cin.style.opacity='0'; cin.style.pointerEvents='none'; setTimeout(()=>cin.remove(), 500); }
-  if(site && !site.classList.contains('show')) {
-    site.style.opacity='1';
-    site.style.pointerEvents='all';
-    site.classList.add('show');
-    document.body.style.overflow='';
-    document.body.style.cursor='auto';
-  }
-  // Ensure a page is active
-  if(!document.querySelector('.page.active')) {
-    const home = document.getElementById('page-accueil');
-    if(home) { home.classList.add('active'); home.style.display='block'; }
-  }
-}, 16000);
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
@@ -2513,6 +2492,26 @@ document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='D')op
 // ----------------------------------------
 // INIT
 // ----------------------------------------
+
+// ── SAFETY FALLBACK: Force show site after 16s max ──
+setTimeout(() => {
+  const cin = document.getElementById('cinematic');
+  const site = document.getElementById('site');
+  if (cin) { cin.style.opacity='0'; cin.style.pointerEvents='none'; setTimeout(()=>cin.remove(), 500); }
+  if (site && !site.classList.contains('show')) {
+    site.style.opacity = '1';
+    site.style.pointerEvents = 'all';
+    site.classList.add('show');
+    document.body.style.overflow = '';
+    document.body.style.cursor = 'auto';
+    document.documentElement.style.overflow = '';
+  }
+  if (!document.querySelector('.page.active')) {
+    const home = document.getElementById('page-accueil');
+    if (home) { home.classList.add('active'); home.style.display = 'block'; }
+  }
+}, 16000);
+
 document.addEventListener('DOMContentLoaded', () => {
   initEmailJS();
   // Footers injected after reveal via showSiteNow()
