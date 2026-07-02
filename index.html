@@ -2393,11 +2393,6 @@ function getDefaultOffres() {
     {id:'off_002',titre:'Assistant(e) Logistique & Approvisionnement',entreprise:'Client confidentiel - Fabrication Produits Sanitaires',secteur:'Logistique / Supply Chain',contrat:'CDD',localisation:'Sotuba, Bamako',statut:'urgent',date:'2026-06-24',description:'02 postes. Planification et suivi approvisionnements. Cl\u00f4ture 07/08/2026.',candidatures:0},
     {id:'off_003',titre:'Assistant(e) Comptable',entreprise:'Client confidentiel - Fabrication Produits Sanitaires',secteur:'Finance / Comptabilit\u00e9',contrat:'CDD',localisation:'Sotuba, Bamako',statut:'urgent',date:'2026-06-24',description:'01 poste. Enregistrement et suivi op\u00e9rations financi\u00e8res. Cl\u00f4ture 07/08/2026.',candidatures:0},
     {id:'off_004',titre:'Assistant(e) Maintenance',entreprise:'Client confidentiel - Fabrication Produits Sanitaires',secteur:'Maintenance Industrielle',contrat:'CDD',localisation:'Sotuba, Bamako',statut:'urgent',date:'2026-06-24',description:'01 poste. Maintenance pr\u00e9ventive et corrective \u00e9quipements industriels. Cl\u00f4ture 07/08/2026.',candidatures:0},
-  ,titre:'Directeur Financier & Administratif',entreprise:'Client confidentiel',secteur:'Finance & Banque',contrat:'CDI',localisation:'Bamako',statut:'urgent',date:'2025-06-15',description:'',candidatures:4},
-    {id:'off_002',titre:'Ingénieur Génie Civil Senior',entreprise:'Client confidentiel',secteur:'BTP & Mines',contrat:'CDI',localisation:'Kayes',statut:'en_cours',date:'2025-06-12',description:'',candidatures:2},
-    {id:'off_003',titre:'Responsable RH & Paie',entreprise:'Client confidentiel',secteur:'RH',contrat:'CDI',localisation:'Bamako',statut:'en_cours',date:'2025-06-10',description:'',candidatures:7},
-    {id:'off_004',titre:'Coordinateur Programme ONG',entreprise:'ONG Internationale',secteur:'ONG',contrat:'CDD',localisation:'Sikasso',statut:'priorite',date:'2025-06-08',description:'',candidatures:1},
-    {id:'off_005',titre:'Chef de Projet Digitalisation',entreprise:'Client confidentiel',secteur:'Tech',contrat:'CDD',localisation:'Bamako',statut:'nouveau',date:'2025-06-05',description:'',candidatures:3},
   ];
 }
 function addOffreToDashboard(data) {
@@ -2580,7 +2575,7 @@ function openPostDetail(id) {
         '<div><div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Kany RH Consulting recrute</div>' +
         '<h2 style="font-family:Playfair Display,serif;font-size:clamp(20px,3vw,32px);font-weight:700;color:#fff;margin-bottom:4px;">' + p.titre + '</h2>' +
         '<div style="font-size:12px;color:rgba(255,255,255,.4);">' + p.postes + '</div></div>' +
-        '<button class="btn-g" onclick="nav('offres','candidat')" style="font-size:11px;">Postuler maintenant</button>' +
+        '<button class="btn-g" onclick="showOff(null,\'candidat\')" style="font-size:11px;">Postuler maintenant</button>' +
       '</div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">' +
         '<div style="background:rgba(255,255,255,.03);padding:14px;border-left:2px solid var(--gold);"><div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Lieu</div><div style="font-size:13px;color:#fff;">' + p.lieu + '</div></div>' +
@@ -2618,7 +2613,7 @@ function openPostDetail(id) {
       '<p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px;">Envoyez votre CV actualis\u00e9 + lettre de motivation personnalis\u00e9e \u00e0 :</p>' +
       '<a href="mailto:kanyrhconsultingrecrute@gmail.com" style="color:var(--gold);font-size:15px;font-weight:600;text-decoration:none;">kanyrhconsultingrecrute@gmail.com</a>' +
       '<div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
-        '<button class="btn-g" onclick="nav('offres','candidat')" style="font-size:11px;">D\u00e9poser ma candidature</button>' +
+        '<button class="btn-g" onclick="nav(\'offres\',\'candidat\')" style="font-size:11px;">D\u00e9poser ma candidature</button>' +
         '<a href="mailto:kanyrhconsultingrecrute@gmail.com?subject=Candidature%20' + encodeURIComponent(p.titre) + '" class="btn-o" style="font-size:11px;text-decoration:none;">&#128139; Email direct</a>' +
       '</div>' +
     '</div>';
