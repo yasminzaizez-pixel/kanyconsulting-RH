@@ -1228,21 +1228,26 @@ function iLoop(ts) {
   if (iRun) requestAnimationFrame(iLoop);
 }
 
-// -- REVEAL SITE --
 function doReveal() {
   iRun = false;
   const cin = document.getElementById('cinematic');
+  console.log('[KANY] doReveal() called, cinematic element:', !!cin);
   if (!cin) { showSiteNow(); return; }
   cin.style.transition = 'opacity 1s ease';
   cin.style.opacity = '0';
   cin.style.pointerEvents = 'none';
+  console.log('[KANY] Intro fading out...');
   setTimeout(showSiteNow, 1000);
 }
 
 function showSiteNow() {
+  console.log('[KANY] showSiteNow() called');
   // Remove intro completely
   const cin = document.getElementById('cinematic');
-  if (cin) cin.remove();
+  if (cin) {
+    cin.remove();
+    console.log('[KANY] Cinematic intro removed');
+  }
 
   // Unlock body
   document.body.style.overflow = '';
@@ -1251,6 +1256,7 @@ function showSiteNow() {
 
   // Show site
   const site = document.getElementById('site');
+  console.log('[KANY] Site element:', !!site);
   if (site) {
     site.style.display = 'block';
     // Force layout recalc before opacity change
@@ -1258,6 +1264,7 @@ function showSiteNow() {
     site.style.opacity = '1';
     site.style.pointerEvents = 'all';
     site.classList.add('show');
+    console.log('[KANY] Site displayed');
   }
 
   // Make sure accueil page is active
@@ -1266,7 +1273,7 @@ function showSiteNow() {
     p.style.display = '';
   });
   const acc = document.getElementById('page-accueil');
-  if (acc) { acc.classList.add('active'); acc.style.display = 'block'; }
+  if (acc) { acc.classList.add('active'); acc.style.display = 'block'; console.log('[KANY] Accueil page activated'); }
 
   // CRITICAL: Re-enable scroll and force to top
   document.documentElement.style.overflow = '';
@@ -1300,8 +1307,15 @@ function skipIntro() {
 }
 
 // Start intro
-if (IX) requestAnimationFrame(iLoop);
-else showSiteNow(); // fallback if canvas not available
+if (IX) {
+  rsz();  // Initialize canvas
+  window.addEventListener('resize', rsz);
+  requestAnimationFrame(iLoop);
+  console.log('[KANY] Intro animation started');
+} else {
+  console.log('[KANY] Canvas not available, showing site directly');
+  showSiteNow(); // fallback if canvas not available
+}
 
 // ----------------------------------------
 // HERO BG CANVAS
@@ -1912,7 +1926,9 @@ setTimeout(() => {
 }, 16000);
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[KANY] DOMContentLoaded - Starting initialization...');
   initEmailJS();
+  console.log('[KANY] EmailJS initialized');
   // Footers injected after reveal via showSiteNow()
 });
 
